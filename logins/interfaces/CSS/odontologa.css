@@ -1,0 +1,725 @@
+/* ===== Estilo de letras ===== */* 
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* ===== FONDO GENERAL ===== */
+body {
+  background-color: #f4f0ff;
+  margin: 0;
+}
+
+
+/* === MENSAJE DE BIENVENIDA (TOAST) === */
+.toast-bienvenida {
+  position: fixed;
+  top: 20px;
+  right: 420px;
+  background: linear-gradient(135deg, #7a42f4, #a590cd);
+  color: white;
+  padding: 14px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  font-weight: 600;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: toastIn 0.5s forwards;
+  font-size: 0.95rem;
+}
+
+@keyframes toastIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes toastOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+
+/* ====== Encabezado ====== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon-circle {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #8235FF; /* Morado más oscuro */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 25px;
+}
+
+h1 {
+  margin: 0;
+  color: #8235FF;
+}
+
+.logout-link {
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+}
+
+
+/* ============================
+   Esta es para la imagen
+   ============================ */
+.logo-image {
+  position: absolute;         /* Coloca el logo sobre el fondo */
+  top: 5px;                  /* Ajusta distancia desde arriba */
+  left: 20px;                 /* Ajusta desde la izquierda */
+  width: 140px;               /* Tamaño visible del logo */
+  height: auto;               /* Mantiene proporción */
+  z-index: 100;               /* Hace que esté encima de otros elementos */
+  opacity: 0.9;               /* Suaviza la integración visual */
+}
+
+
+/* ====== Contenedor principal ====== */
+.container {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  align-items: flex-start;
+}
+
+/* ====== Sección izquierda (consulta) ====== */
+.consulta {
+  flex: 2;
+  background: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.consulta-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tabs {
+  display: flex;
+  background: #eae6ff;
+  border-radius: 10px;
+  margin: 1rem 0;
+}
+
+.tab {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tab.active {
+  background: #8235FF;
+  color: white;
+  border-radius: 10px;
+}
+
+.info-box {
+  display: flex;
+  justify-content: space-between;
+  background: #eef1ff;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.badge {
+  background: #c8f5d3;
+  color: #207b2b;
+  border-radius: 6px;
+  padding: 2px 8px;
+}
+
+textarea, input, select {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 1rem;
+  font-family: inherit;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.save-btn {
+  background: #8235FF;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.receta-btn {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+/* ====== Panel derecho ====== */
+.sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.agenda, .procedimientos, .stats {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.agenda-item {
+  background: #edf0ff;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  transition: 0.3s;
+}
+
+.agenda-item.active {
+  border: 2px solid #8235FF;
+}
+
+.hora {
+  color: #8235FF;
+  font-weight: bold;
+  float: right;
+}
+
+.grid-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.grid-buttons button {
+  border: 1px solid #8235FF;
+  border-radius: 6px;
+  background: white;
+  padding: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.grid-buttons button.active {
+  background: #8235FF;
+  color: white;
+}
+
+.stats p {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+}
+
+
+
+/* === Fondo difuminado cuando el modal está activo === */
+body.modal-abierto::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 9998;
+}
+
+/* === Modal de Receta Médica === */
+.modal-receta {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-contenido {
+  background: #fff;
+  width: 420px;
+  border-radius: 14px;
+  padding: 1.8rem;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  animation: slideDown 0.3s ease;
+  position: relative;
+  z-index: 10000;
+}
+
+.modal-contenido h2 {
+  margin-top: 0;
+  color: #3a3a3a;
+  text-align: center;
+  font-weight: 700;
+}
+
+.cerrar-modal {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 22px;
+  color: #666;
+  transition: color 0.2s;
+}
+.cerrar-modal:hover { color: #000; }
+
+.modal-contenido input,
+.modal-contenido textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+  background: #f9f9ff;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+.modal-contenido input:focus,
+.modal-contenido textarea:focus {
+  border-color: #7a42f4;
+  outline: none;
+}
+
+/* === Botón morado con icono === */
+.modal-contenido button {
+  background: #7a42f4;
+  color: white;
+  width: 100%;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 1rem;
+  transition: background 0.2s ease;
+}
+.modal-contenido button i {
+  font-size: 1.1rem;
+}
+.modal-contenido button:hover {
+  background: #5c2bd9;
+}
+
+/* === Animaciones === */
+@keyframes slideDown {
+  from { transform: translateY(-25px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+
+/* ===== ODONTOGRAMA ===== */
+.odontograma-contenedor {
+  background: #fbfaff;
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.modo-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+}
+
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+
+/* Switch de adulto / niño */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 24px;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #8235FF;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.odontograma-dientes {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.fila {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.diente {
+  width: 35px;
+  height: 55px;
+  border: 2px solid #33aa33;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: .3s;
+  font-weight: 500;
+  background: white;
+}
+
+.diente.sano { border-color: #33aa33; }
+.diente.caries { border-color: #ff3333; }
+.diente.tratado { border-color: #3366ff; }
+.diente.observacion { border-color: #e2b200; }
+.diente.ausente { border-color: #444; }
+
+.diente:hover {
+  transform: scale(1.08);
+}
+
+.estado-selector {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.estados {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.estado {
+  border: 1px solid #ccc;
+  background: white;
+  border-radius: 8px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.estado.activo {
+  border: 2px solid #8235FF;
+  background: #f0e8ff;
+}
+
+
+
+/* ====== HISTORIAL ====== */
+.tabla-historial {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.tabla-historial th, .tabla-historial td {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.tabla-historial th {
+  background: #f5f3ff;
+  color: #333;
+}
+
+.estado {
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.estado.completado {
+  background: #d4f8d4;
+  color: #1a7a1a;
+}
+
+.estado.proceso {
+  background: #dbe4ff;
+  color: #1f4fd1;
+}
+
+.estado.pendiente {
+  background: #fff5cc;
+  color: #947800;
+}
+
+.generar-historial {
+  text-align: right;
+  margin-top: 1rem;
+}
+
+#btnHistorial {
+  background: #8235FF;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+#btnHistorial:hover {
+  background: #6e1eff;
+}
+
+
+
+/* ==== Mensajes de validación ==== */
+.error-msg {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  display: block;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.error-input {
+  border: 1.5px solid #e74c3c !important;
+}
+
+
+.msg-exito {
+  background: #c8f7c5;
+  color: #207b2b;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+.exito-msg {
+  background: #c8f7c5;
+  color: #207b2b;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+.toast-success {
+  position: absolute;
+  top: 20px;
+  right: 500px;
+  background: #27ae60;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: opacity 0.5s ease;
+  z-index: 9999;
+}
+
+/* ===== CERRAR SESIÓN DERECHA ===== */
+.header {
+  position: relative;
+  justify-content: center;
+}
+
+.header-right {
+  position: absolute;
+  right: 80px;
+  top: 55px;
+}
+
+
+
+/* ===== MODAL CERRAR SESIÓN ===== */
+.logout-modal-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(6px); /* efecto de desenfoque */
+  background: rgba(0, 0, 0, 0.25);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+}
+
+.logout-modal {
+  background: white;
+  border-radius: 12px;
+  padding: 30px 40px;
+  width: 420px;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  animation: scaleIn 0.3s ease forwards;
+}
+
+.logout-modal h2 {
+  color: #111827;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.logout-modal p {
+  color: #4b5563;
+  font-size: 0.95rem;
+  margin-bottom: 25px;
+}
+
+.logout-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn-cancel, .btn-logout {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-cancel {
+  background: #e5e7eb;
+  color: #1f2937;
+}
+
+.btn-cancel:hover {
+  background: #d1d5db;
+}
+
+.btn-logout {
+  background: #ef4444;
+  color: white;
+}
+
+.btn-logout:hover {
+  background: #dc2626;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
